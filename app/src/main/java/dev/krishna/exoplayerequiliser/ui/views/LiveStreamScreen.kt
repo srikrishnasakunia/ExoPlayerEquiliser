@@ -26,10 +26,11 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
+import dev.krishna.exoplayerequiliser.ui.viewmodel.AudioEqualizerViewModel
 import dev.krishna.exoplayerequiliser.utils.ExoPlayerManager
 
 @OptIn(UnstableApi::class) @Composable
-fun LiveStreamingScreen() {
+fun LiveStreamingScreen(viewModel: AudioEqualizerViewModel) {
     val context = LocalContext.current
     val lifeCycleOwner = LocalLifecycleOwner.current
 
@@ -58,7 +59,7 @@ fun LiveStreamingScreen() {
         exoPlayer.setMediaSource(internetVideoSource)
         exoPlayer.prepare()
 
-        //viewModel.onStart(exoPlayer.audioSessionId)
+        viewModel.onStart(exoPlayer.audioSessionId)
     }
 
     //Creating the UI for the Player.
